@@ -1,0 +1,28 @@
+ <div class="container marketing" id="artistas">
+    <div class="row">
+      <div *ngFor="let artista of artistas" class="col-lg-4">
+        <img class="rounded-circle" src= {{artista.foto}} alt="Generic placeholder image" width="140" height="140">
+        <h2>{{artista.nombre}}</h2>
+        <p>{{artista.nacionalidad}}</p>
+        <p>{{artista.fechaNacimiento.toString().split("T")[0]}}</p>
+        <p><a class="btn btn-secondary" role="button" id={{artista.id}} (click)=modalData(artista.id) data-bs-toggle="modal" data-bs-target="#exampleModal">Ver detalles &raquo;</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div *ngFor="let uno of unArtista" class="modal-body">
+          <div class="card text-white bg-dark" style="max-width: 29rem; max-height: 29rem;">
+            <img src={{uno.foto}} class="card-img-top" alt="foto" width="300" height="300">
+            <div class="card-header">{{uno.nacionalidad}}</div>
+            <div class="card-body">
+              <h5 class="card-title">{{uno.nombre}}</h5>
+              <p class="card-text">{{uno.fechaNacimiento.toString().split("T")[0]}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
